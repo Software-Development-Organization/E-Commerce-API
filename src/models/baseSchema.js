@@ -4,6 +4,10 @@ const baseSchemaFields = {
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
   isDeleted: { type: Boolean, default: false },
+  isActive: { type: Boolean, default: true },
+  //TODO: add createdBy and updatedBy fields after adding user model
+  //createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  //updatedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
 };
 
 const addBaseSchema = (schema) => {
