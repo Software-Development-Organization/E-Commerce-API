@@ -31,6 +31,10 @@ const hardDeleteCategory = async (id) => {
   return await Category.findByIdAndDelete(id);
 };
 
+const getCategoriesForSelectBox = async () => {
+  return await Category.find({ isDeleted: false }).select('name');
+};
+
 module.exports = {
   createCategory,
   getCategories,
@@ -38,4 +42,5 @@ module.exports = {
   updateCategory,
   softDeleteCategory,
   hardDeleteCategory,
+  getCategoriesForSelectBox,
 };

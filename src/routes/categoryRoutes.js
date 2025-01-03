@@ -2,6 +2,8 @@ const express = require('express');
 const categoryController = require('../controllers/categoryController');
 const router = express.Router();
 
+router.get('/selectbox', categoryController.getCategoriesForSelectBox);
+
 router.post('/', categoryController.createCategory);
 router.get('/', categoryController.getCategories);
 router.get('/:id', categoryController.getCategoryById);

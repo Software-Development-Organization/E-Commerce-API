@@ -85,10 +85,20 @@ const deleteCategory = async (req, res) => {
   }
 };
 
+const getCategoriesForSelectBox = async (req, res) => {
+  try {
+    const categories = await categoryService.getCategoriesForSelectBox();
+    res.status(200).json(categories);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 module.exports = {
   createCategory,
   getCategories,
   getCategoryById,
   updateCategory,
   deleteCategory,
+  getCategoriesForSelectBox,
 };
