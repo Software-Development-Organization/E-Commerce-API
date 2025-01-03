@@ -32,7 +32,9 @@ const hardDeleteCategory = async (id) => {
 };
 
 const getCategoriesForSelectBox = async () => {
-  return await Category.find({ isDeleted: false }).select('name');
+  return await Category.find({ isDeleted: false }).select(
+    'name parentCategoryId'
+  );
 };
 
 module.exports = {
