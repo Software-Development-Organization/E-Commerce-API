@@ -17,7 +17,7 @@ const updateCategory = async (id, data) => {
   return await Category.findByIdAndUpdate(id, data, { new: true });
 };
 
-const deleteCategory = async (id) => {
+const softDeleteCategory = async (id) => {
   const category = await Category.findById(id);
 
   if (!category) {
@@ -27,10 +27,15 @@ const deleteCategory = async (id) => {
   return await category.softDelete();
 };
 
+const hardDeleteCategory = async (id) => {
+  return await Category.findByIdAndDelete(id);
+};
+
 module.exports = {
   createCategory,
   getCategories,
   getCategoryById,
   updateCategory,
-  deleteCategory,
+  softDeleteCategory,
+  hardDeleteCategory,
 };

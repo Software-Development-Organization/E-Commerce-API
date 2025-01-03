@@ -60,7 +60,16 @@ const updateCategory = async (req, res) => {
 
 const deleteCategory = async (req, res) => {
   try {
-    const category = await categoryService.deleteCategory(req.params.id);
+    const { id } = req.params;
+    const { isHardDelete } = req.query;
+
+    let category;
+
+    if (isHardDelete === 'true') {
+      category = await categoryService.hardDeleteCategory(id);
+    } else {
+      category = await categoryService.softDeleteCategory(id);
+    }
 
     if (!category) {
       return res.status(404).json({ error: 'Category not found' });
